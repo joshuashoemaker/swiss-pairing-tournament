@@ -4,7 +4,19 @@ This project is a test for working with the PSQL database. This is a project
 I completeed for the U dacity Full Stack Nanodegree program.
 
 First run the tournament.SQL file to set up the database, tables, and views.
-After this run >>>tournament_test.py to see the results of the tests. 
+to do so run this comamnt in your console, assuming you have PSQL installed:
+
+### psql -f tounament.sql
+
+You now have the database, tables and view set up for this project.
+
+Then run the test in your python shell, or in the your operating systems console 
+with "python" before this command:
+
+###>>>tournament_test.py
+
+This file runs unit test for the main functions of this project to ensure everything
+is structured properly.
 
 The Tournament.py file handles all the inserts and selects from the database 
 and returning useful arrays of data to use. It can be used alone in your scripts
