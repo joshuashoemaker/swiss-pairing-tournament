@@ -13,9 +13,12 @@ CREATE TABLE players(
 );
 
 CREATE TABLE matches(
-    match_id serial PRIMARY KEY,
+    match_id serial,
     loser integer,
-    winner integer
+    winner integer,
+    PRIMARY KEY (match_id),
+    FOREIGN KEY (loser) REFERENCES players (id),
+    FOREIGN KEY (winner) REFERENCES players (id)
 );
 
 CREATE VIEW v_matches_played AS
