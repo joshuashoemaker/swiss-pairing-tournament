@@ -30,7 +30,7 @@ def countPlayers():
     """Returns the number of players currently registered."""
     db = connect()
     cur = db.cursor()
-    cur.execute("SELECT COUNT(*) as number FROM players")
+    cur.execute("SELECT COUNT(*) FROM players")
     db.commit()
     results = cur.fetchone()[0]
     db.close()
@@ -73,14 +73,7 @@ def playerStandings():
     """
     db = connect()
     cur = db.cursor()
-    SQL = """select id, 
-            name, 
-            case when played is null then 0 else played end, 
-            case when wins is null then 0 else wins end
-        from Players 
-        left join v_number_of_wins using (id)
-        left join v_matches_played using (id)
-        ORDER BY wins DESC;"""
+    SQL = """SELECT * FROM v_player_standings"""
     cur.execute(SQL)
     results = cur.fetchall()
     db.close()

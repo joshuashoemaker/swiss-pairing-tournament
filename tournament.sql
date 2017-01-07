@@ -34,3 +34,13 @@ CREATE VIEW v_number_of_wins AS
   WHERE players.id = matches.winner
   GROUP BY players.id
   ORDER BY wins DESC;
+
+CREATE VIEW v_player_standings AS
+    select id, 
+            name, 
+            case when played is null then 0 else played end, 
+            case when wins is null then 0 else wins end
+        from Players 
+        left join v_number_of_wins using (id)
+        left join v_matches_played using (id)
+        ORDER BY wins DESC;
